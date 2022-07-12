@@ -1,9 +1,8 @@
 import React, { useState, useRef } from 'react'
-import CopyButton from './buttons/CopyButton'
-import Button from '../button/Button'
+// import CopyButton from './buttons/CopyButton'
 
 export default function PasswordBox() {
-    const [password, setPassword] = useState('astha');
+    const [password, setPassword] = useState('');
     const passwordRef = useRef(null);
     let pwdDescription = '';
 
@@ -30,7 +29,7 @@ export default function PasswordBox() {
 
     }
     return (
-        <div className='relative flex flex-col w-full h-40 border-2 border-slate-300 mt-8 rounded-md'
+        <div className='relative flex flex-col w-full h-40 border-2 border-slate-300 rounded-md'
             style={{ backgroundColor: setBackgroundColor(password) }}>
             <p className='p-3 text-white font-medium'>Generated Password:</p>
             <div className='flex w-full justify-center items-center h-full'>

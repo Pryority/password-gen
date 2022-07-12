@@ -33,6 +33,10 @@ const getRandomInteger = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+export const generatePasswordLength = () => {
+    return passwordLength;
+}
+
 export const setPasswordLength = length => {
     passwordLength = length;
     return passwordLength;
@@ -47,4 +51,9 @@ export const generatePassword = (passwordProps, pwdLength) => {
     setNumber(numbers);
     // // const password = passwordCharacters();
     // return password;
+}
+
+export const copyToClipBoard = elementRef => {
+    elementRef.select();
+    navigator.clipboard('copy');
 }
