@@ -5,7 +5,7 @@ const CheckBox = props => {
     const { label, value, checked, name, onChange, disabled } = props;
     return (
         <>
-            <div className='flex w-full justify-center'>
+            <div className='flex  justify-center'>
                 <label className="flex items-center justify-center space-x-2">
                     <h1>{label}</h1>
                     <input

@@ -32,7 +32,7 @@ const Slider = props => {
 
     return (
         <div className="flex w-full justify-center">
-            <div className="flex w-2/3">
+            <div className="flex w-7/8">
                 <input
                     ref={rangeRef}
                     className="flex w-full"

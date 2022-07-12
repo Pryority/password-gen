@@ -68,25 +68,25 @@ const Container = props => {
                         />
                     </div>
                 </div>
-                <div className="flex w-full justify-center">
-                    <div className="flex w-full justify-center">
-                        {
-                            CHECKBOX_LIST.map(checkbox =>
-                                <CheckBox
-                                    key={checkbox.id}
-                                    name={checkbox.name}
-                                    checked={checkbox.isChecked}
-                                    label={checkbox.label}
-                                    value={checkbox.isChecked}
-                                    onChange={onChangeCheckBox}
-                                    disabled={
-                                        checked && checkbox.isChecked && checkedName === checkbox.name
-                                    }
-                                />
-                            )
-                        }
-                    </div>
+
+                <div className="flex justify-center flex-wrap">
+                    {
+                        CHECKBOX_LIST.map(checkbox =>
+                            <CheckBox
+                                key={checkbox.id}
+                                name={checkbox.name}
+                                checked={checkbox.isChecked}
+                                label={checkbox.label}
+                                value={checkbox.isChecked}
+                                onChange={onChangeCheckBox}
+                                disabled={
+                                    checked && checkbox.isChecked && checkedName === checkbox.name
+                                }
+                            />
+                        )
+                    }
                 </div>
+
             </div>
         </div>
     )

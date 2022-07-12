@@ -41,7 +41,7 @@ export default function PasswordBox() {
                     readOnly
                 />
             </div>
-            <div className='flex flex-1 justify-between items-center p-4'>
+            <div className='flex flex-wrap justify-center items-center p-4'>
                 <div className='flex space-x-2 items-center'>
                     <div>{
                         password && password.length > 10 ?
