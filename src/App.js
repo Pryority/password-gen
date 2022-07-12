@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import options from './utils/Options'
-import MainColumn from './components/MainColumn';
+import Main from './components/Main';
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div>
-      <MainColumn />
+      <Main />
     </div>
   );
 }

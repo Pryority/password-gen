@@ -1,15 +1,15 @@
 const options = [
     {
-        name: "Letters",
+        name: "Uppercase letters",
+    },
+    {
+        name: "Lowercase Letters",
     },
     {
         name: "Numbers",
     },
     {
-        name: "Special Characters",
-    },
-    {
-        name: "Capital Letters",
+        name: "Symbols",
     },
 ];
 
