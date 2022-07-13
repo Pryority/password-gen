@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# Password Generator w/ React
+
+This application allows you to generate a relatively strong password, using various options to improve the strength of the password.
+
+![demo of app](demo.jpg)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
