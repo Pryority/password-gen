@@ -4,7 +4,7 @@ import CheckBox from './checkbox/CheckBox';
 
 const Container = props => {
     const [password, setPassword] = useState({
-        length: 5,
+        length: 4,
         uppercase: false,
         lowercase: false,
         numbers: false,
@@ -12,7 +12,6 @@ const Container = props => {
     });
 
     const [copy, setCopy] = useState('');
-
     const [handleText, setHandleText] = useState('');
 
     const handleChangeLowercase = () => {
@@ -41,13 +40,37 @@ const Container = props => {
     };
 
     const setPasswordLength = (val) => {
-        setHandleText({
+        setPassword({
             ...password,
             length: val
         })
     };
 
-    const passwordRef = useRef(null);
+    function generatePassword() {
+        const numbersArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        const symbolsArray = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
+
+        const characterCodes = Array.from(Array(26)).map((_e, i) => i + 97);
+        const lowercaseLetters = characterCodes.map(letter => String.fromCharCode(letter));
+        const uppercaseLetters = lowercaseLetters.map(letter => letter.toUpperCase());
+
+        const { length, uppercase, lowercase, numbers, symbols } = password;
+
+        const generatePwd = (length, uppercase, lowercase, numbers, symbols) => {
+            const availableChar = [
+                ...(uppercase ? uppercaseLetters : []),
+                ...(lowercase ? lowercaseLetters : []),
+                ...(numbers ? numbersArray : []),
+                ...(symbols ? symbolsArray : []),
+            ];
+            const shuffleArr = (array) => array.sort(() => Math.random() - 0.5);
+            const characters = shuffleArr(availableChar).slice(0, length);
+            setHandleText(characters.join(''));
+            return characters;
+        };
+        generatePwd(length, uppercase, lowercase, numbers, symbols)
+    }
+
     let pwdDescription = '';
 
     const setBackgroundColor = password => {
@@ -66,6 +89,7 @@ const Container = props => {
         }
     }
 
+
     return (
         <>
             <div className='border-2 border-slate-300 p-4 bg-blue-100 rounded-md flex w-full'>
@@ -75,10 +99,13 @@ const Container = props => {
 
                     <div className="flex justify-center flex-col space-y-4 w-full">
                         <div className='flex items-center justify-between'>
-                            <p className='flex w-full'>Password length</p>
+                            <p className='flex w-full'>Password length:</p>
                             <span className='w-full' />
                             <input
-                                value={handleText}
+                                type='number'
+                                min={4}
+                                max={24}
+                                value={password.length}
                                 onChange={(e) => setPasswordLength(e.target.value)}
                                 className='w-1/2'
                             />
@@ -86,22 +113,26 @@ const Container = props => {
                         <div className='flex items-center justify-between'>
                             <p className='flex w-full'>Include uppercase letters</p>
                             <span className='w-full' />
-                            <CheckBox value={password.uppercase} onChange={handleChangeUppercase} />
+                            <CheckBox
+                                value={password.uppercase} onChange={handleChangeUppercase} />
                         </div>
                         <div className='flex items-center justify-between'>
                             <p className='flex w-full'>Include lowercase letters</p>
                             <span className='w-full' />
-                            <CheckBox value={password.lowercase} onChange={handleChangeLowercase} />
+                            <CheckBox
+                                value={password.lowercase} onChange={handleChangeLowercase} />
                         </div>
                         <div className='flex items-center justify-between'>
                             <p className='flex w-full'>Include numbers</p>
                             <span className='w-full' />
-                            <CheckBox value={password.numbers} onChange={handleChangeNumbers} />
+                            <CheckBox
+                                value={password.numbers} onChange={handleChangeNumbers} />
                         </div>
                         <div className='flex items-center justify-between'>
                             <p className='flex w-full'>Include symbols</p>
                             <span className='w-full' />
-                            <CheckBox value={password.symbols} onChange={handleChangeSymbols} />
+                            <CheckBox
+                                value={password.symbols} onChange={handleChangeSymbols} />
                         </div>
                     </div>
                 </div>
@@ -111,10 +142,11 @@ const Container = props => {
                 <p className='p-3 text-white font-medium'>Generated Password:</p>
                 <div className='flex w-full justify-center items-center h-full'>
                     <input
-                        ref={passwordRef}
                         type="text"
-                        value={password}
+                        value={handleText}
+                        placeholder=''
                         className='bg-inherit ring-0 focus:ring-0 outline-none text-center text-xl text-white font-bold'
+                        onChange={(e) => setHandleText(e.target.value)}
                         readOnly
                     />
                 </div>
@@ -168,6 +200,7 @@ const Container = props => {
                             </svg>
                         </button>
                         <button
+                            onClick={generatePassword}
                             className='flex justify-center space-x-2 rounded-md  items-center bg-blue-100 p-2'
                         >
                             <p>Generate</p>
