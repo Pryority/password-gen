@@ -2,7 +2,7 @@
 
 This application allows you to generate a relatively strong password, using various options to improve the strength of the password.
 
-![demo of app](demo.jpg)
+![demo of app](./public/demo.jpg)
 
 ## Getting Started with Create React App
 
