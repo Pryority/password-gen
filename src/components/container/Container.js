@@ -79,7 +79,7 @@ const Container = props => {
             return '#cb473e';
         } else if (password && password.length >= 6 && password.length <= 10) {
             pwdDescription = 'Weak password';
-            return '#f07df8';
+            return '#fca103';
         } else if (password && password.length > 10) {
             pwdDescription = 'Strong password';
             return '#55a95d';
