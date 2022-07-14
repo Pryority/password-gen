@@ -2,6 +2,8 @@
 
 This application allows you to generate a relatively strong password, using various options to improve the strength of the password.
 
+View the deployed application [HERE](https://still-ocean-19482.herokuapp.com/)!
+
 ![demo of app](./src/demo.png)
 
 ## Getting Started with Create React App
